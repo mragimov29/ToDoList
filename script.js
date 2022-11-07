@@ -1,7 +1,6 @@
 let form = document.querySelector('.form'),
 sortButton = document.querySelector('.sort'), 
 addButton = document.querySelector('.add');
-let counter = 0;
 let removeButton, input;
 
 addButton.addEventListener('click', (e) => {
@@ -27,8 +26,9 @@ function inputEnter() {
     input.forEach(item => {
         item.addEventListener('keyup', (event) => {
             event.preventDefault();
-            if (event.key == 'Enter')
+            if (event.key == 'Enter') {
                 item.readOnly = true;
+            }
         });
 
         removeButton.forEach(button => {
@@ -70,11 +70,7 @@ sortButton.addEventListener('click', (event) => {
     if (event.target.id != 'up') {
         event.target.src = '/images/up_gray.svg';
         event.target.id = 'up';
-        data.sort((a, b) => {
-            if (a < b) return -1;
-            else if (a == b) return 0;
-            else return 1;
-        });
+        data.sort();
     } else if (event.target.id != 'down') {
         event.target.src = '/images/down_gray.svg';
         event.target.id = 'down';
