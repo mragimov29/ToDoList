@@ -99,3 +99,68 @@ input {
     background-color: #888;
     border-radius: 20px;
 }
+
+@media (min-width: 2000px) {
+    .container {
+        width: 636px;
+        max-height: 566px;
+        min-height: 446px;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 60px;
+    }
+    
+    .sort {
+        width: 47px;
+        height: 23px;
+        margin: -20px 0px 0px 520px;
+    }
+    
+    .add {
+        width: 284px;
+        border-radius: 70px;
+        height: 65px;
+        margin: 38px 0px 20px 170px;
+    }
+    
+    input {
+        height: 38px;
+        width: 378px;
+        margin-left:60px;
+        font-size: 22px;
+    }
+    
+    .yellow-line {
+        width: 636px;
+        height: 43px;
+        border-radius: 19px 19px 0px 0px;
+    }
+    
+    .form {
+        margin: 12px 0px 0px 55px;
+        width: 531px;
+        max-height: 240px;
+        min-height: 45px;
+        border-radius: 20px;
+    }
+    
+    .input-line {
+        width: 426px;
+        margin-left: 28px;
+    }
+    
+    .add span {
+        font-size: 20px;
+        margin-left: 27px;
+    }
+    
+    .circle {
+        font-size: 20px;
+        height: 64px;
+        width: 79px;
+        margin-left: -6px;
+        border-radius: 50%;
+    }
+}
