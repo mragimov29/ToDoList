@@ -50,3 +50,35 @@ function inputEnter() {
         });
     });
 }
+
+sortButton.addEventListener('click', (event) => {
+    let input = document.querySelectorAll('input');
+
+    let data = []
+    input.forEach((item) => {
+        data.push(item.value);
+    });
+
+    if (event.target.src.substring(21) != '/images/up_gray.svg') {
+        event.target.src = '/images/up_gray.svg';
+
+        data.sort((a, b) => {
+            if (a < b) return -1;
+            else if (a == b) return 0;
+            else return 1;
+        });
+    } else if (event.target.src.substring(21) == '/images/up_gray.svg') {
+        event.target.src = '/images/down_gray.svg';
+
+        data.sort((a, b) => {
+            if (a < b) return 1;
+            else if (a == b) return 0;
+            else return -1;
+        });
+    }
+
+    for (let i = 0; i < data.length; i++)
+        input[i].value = data[i];
+
+    inputEnter();
+});
