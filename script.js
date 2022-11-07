@@ -1,3 +1,27 @@
+let form = document.querySelector('.form'),
+sortButton = document.querySelector('.sort'), 
+addButton = document.querySelector('.add');
+let counter = 0;
+let removeButton, input;
+
+addButton.addEventListener('click', (e) => {
+    let div = document.createElement('div');
+    div.innerHTML = `<input placeholder="Введите текст" type="text" class="task" maxlength="25">
+    <img src="/images/remove.svg" class="remove" alt="remove">`;
+    div.classList.add('input-line');
+    form.append(div);
+
+    input = document.querySelectorAll('input');
+    removeButton = document.querySelectorAll('.remove');
+    inputEnter();
+    if (input.length > 5) {
+        form.style.overflow = 'scroll';
+        form.style.overflowX = 'hidden';
+    } else 
+        form.style.overflowY = 'hidden';
+    form.scrollTop = form.scrollHeight;
+});
+
 function inputEnter() {
     input.forEach(item => {
         item.addEventListener('keyup', (event) => {
@@ -18,31 +42,7 @@ function inputEnter() {
             });
         });
     });
-}``
-
-let form = document.querySelector('.form'),
-    sortButton = document.querySelector('.sort'), 
-    addButton = document.querySelector('.add');
-let counter = 0;
-let removeButton, input;
-
-addButton.addEventListener('click', (e) => {
-    let div = document.createElement('div');
-    div.innerHTML = `<input placeholder="Введите текст" type="text" class="task-${myClass}" maxlength="25">
-    <img src="/images/remove.svg" class="remove" alt="remove">`;
-    div.classList.add('input-line');
-    form.append(div);
-
-    input = document.querySelectorAll('input');
-    removeButton = document.querySelectorAll('.remove');
-    inputEnter();
-    if (counter == 4) {
-        form.style.overflow = 'scroll';
-        form.style.overflowX = 'hidden';
-    } else counter++;
-    form.scrollTop = form.scrollHeight;
-});
-
+}
 
 sortButton.addEventListener('click', (event) => {
     let input = document.querySelectorAll('input');
