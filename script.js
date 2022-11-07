@@ -22,3 +22,31 @@ addButton.addEventListener('click', (e) => {
     counter++;
     form.scrollTop = form.scrollHeight;
 });
+
+function inputEnter() {
+    input.forEach(item => {
+        item.addEventListener('keyup', (event) => {
+            event.preventDefault();
+            if (event.key == 'Enter') {
+                item.readOnly = true;
+
+                if (counter >= 4)
+                    form.scrollTop = form.scrollHeight;
+                if (inputLine.length == 0)
+                    myClass = 0;
+            }
+        });
+
+        removeButton.forEach(button => {
+            button.addEventListener('mouseover', (event) => {
+                event.target.src = '/images/remove_purple.svg';
+            });
+            button.addEventListener('mouseout', (event) => {
+                event.target.src = '/images/remove.svg';
+            });
+            button.addEventListener('click', (event) => {
+                button.parentElement.remove();
+            });
+        });
+    });
+}
