@@ -15,6 +15,7 @@ addButton.addEventListener('click', (e) => {
     removeButton = document.querySelectorAll('.remove');
     inputEnter();
     if (input.length > 5) {
+        form.style.overflowY = 'auro';
         form.style.overflow = 'scroll';
         form.style.overflowX = 'hidden';
     } else 
@@ -44,6 +45,20 @@ function inputEnter() {
     });
 }
 
+sortButton.addEventListener('mouseover', (event) => {
+    if(event.target.id == 'up')
+        event.target.src = '/images/up_black.svg';
+    else
+        event.target.src = '/images/down_black.svg';
+});
+
+sortButton.addEventListener('mouseout', (event) => {
+    if(event.target.id == 'up')
+        event.target.src = '/images/up_gray.svg';
+    else
+        event.target.src = '/images/down_gray.svg';
+});
+
 sortButton.addEventListener('click', (event) => {
     let input = document.querySelectorAll('input');
 
@@ -52,16 +67,17 @@ sortButton.addEventListener('click', (event) => {
         data.push(item.value);
     });
 
-    if (event.target.src.substring(21) != '/images/up_gray.svg') {
+    if (event.target.id != 'up') {
         event.target.src = '/images/up_gray.svg';
-
+        event.target.id = 'up';
         data.sort((a, b) => {
             if (a < b) return -1;
             else if (a == b) return 0;
             else return 1;
         });
-    } else if (event.target.src.substring(21) == '/images/up_gray.svg') {
+    } else if (event.target.id != 'down') {
         event.target.src = '/images/down_gray.svg';
+        event.target.id = 'down';
 
         data.sort((a, b) => {
             if (a < b) return 1;
