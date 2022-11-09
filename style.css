@@ -108,7 +108,7 @@ input {
     border-radius: 20px;
 }
 
-@media (min-width: 1840px) {
+@media (min-width: 2200px) {
     .container {
         width: 636px;
         max-height: 676px;
