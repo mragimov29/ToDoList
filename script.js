@@ -1,9 +1,13 @@
-let form = document.querySelector('.form'),
+let form = document.querySelector('.form'), 
+    input = document.querySelectorAll('input'),
+    removeButton = document.querySelectorAll('.remove'),
     sortButton = document.querySelector('.sort'),
     addButton = document.querySelector('.add');
-let removeButton, input, inputLine, items, tasksListElement = document.querySelector(`.tasks-list`), counter = 0;
+let items;
 
-addButton.addEventListener('click', (e) => {
+inputEnter();
+
+function addInputLine() {
     let div = document.createElement('div');
     div.innerHTML = `<input placeholder="Введите текст" type="text" maxlength="25">
     <img src="/images/remove.svg" class="remove" alt="remove">`;
@@ -15,20 +19,24 @@ addButton.addEventListener('click', (e) => {
     li.append(div);
     li.draggable = true;
     li.classList.add('task');
-
+    
     form = document.querySelector('.form');
     input = document.querySelectorAll('input');
     removeButton = document.querySelectorAll('.remove');
-    
+}
+
+addButton.addEventListener('click', (e) => {
+    addInputLine();
     inputEnter();
     dragAndDrop();
-
+    
+    
     if (input.length > 5) {
         form.style.overflowY = 'auro';
         form.style.overflow = 'scroll';
         form.style.overflowX = 'hidden';
     } else
-        form.style.overflowY = 'hidden';
+    form.style.overflowY = 'hidden';
     form.scrollTop = form.scrollHeight;
 });
 
@@ -52,12 +60,16 @@ function inputEnter() {
             });
             button.addEventListener('click', (event) => {
                 button.parentElement.remove();
+                
+                if (document.querySelectorAll('input').length == 0) {
+                    addInputLine();
+                    inputEnter();
+                }
             });
         });
     });
-
-
 }
+
 function dragAndDrop() {
     let items = document.getElementsByTagName("li"), current = null;
 
