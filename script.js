@@ -112,11 +112,11 @@ sortButton.addEventListener('click', (event) => {
     });
 
     if (event.target.id != 'up') {
-        event.target.src = '/images/up_gray.svg';
+        event.target.src = '/images/up_black.svg';
         event.target.id = 'up';
         data.sort();
     } else if (event.target.id != 'down') {
-        event.target.src = '/images/down_gray.svg';
+        event.target.src = '/images/down_black.svg';
         event.target.id = 'down';
 
         data.sort((a, b) => {
