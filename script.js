@@ -19,7 +19,10 @@ addButton.addEventListener('click', (e) => {
     form = document.querySelector('.form');
     input = document.querySelectorAll('input');
     removeButton = document.querySelectorAll('.remove');
+    
     inputEnter();
+    dragAndDrop();
+
     if (input.length > 5) {
         form.style.overflowY = 'auro';
         form.style.overflow = 'scroll';
@@ -34,8 +37,9 @@ function inputEnter() {
         item.addEventListener('keyup', (event) => {
             event.preventDefault();
             if (event.key == 'Enter') {
-                item.readOnly = true;
-                dragAndDrop();
+                if(item.value != ''){
+                    item.readOnly = true;
+                }
             }
         });
 
