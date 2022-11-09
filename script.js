@@ -1,6 +1,6 @@
 let form = document.querySelector('.form'),
-sortButton = document.querySelector('.sort'), 
-addButton = document.querySelector('.add');
+    sortButton = document.querySelector('.sort'),
+    addButton = document.querySelector('.add');
 let removeButton, input, inputLine, items, tasksListElement = document.querySelector(`.tasks-list`), counter = 0;
 
 addButton.addEventListener('click', (e) => {
@@ -15,7 +15,7 @@ addButton.addEventListener('click', (e) => {
     li.append(div);
     li.draggable = true;
     li.classList.add('task');
-    
+
     form = document.querySelector('.form');
     input = document.querySelectorAll('input');
     removeButton = document.querySelectorAll('.remove');
@@ -24,7 +24,7 @@ addButton.addEventListener('click', (e) => {
         form.style.overflowY = 'auro';
         form.style.overflow = 'scroll';
         form.style.overflowX = 'hidden';
-    } else 
+    } else
         form.style.overflowY = 'hidden';
     form.scrollTop = form.scrollHeight;
 });
@@ -52,73 +52,48 @@ function inputEnter() {
         });
     });
 
-    
+
 }
 function dragAndDrop() {
     let items = document.getElementsByTagName("li"), current = null;
 
-  // (B) MAKE ITEMS DRAGGABLE + SORTABLE
-  for (let i of items) {
-    // (B1) ATTACH DRAGGABLE
-    i.draggable = true;
-    
-    // (B2) DRAG START - YELLOW HIGHLIGHT DROPZONES
-    i.ondragstart = (ev) => {
-      current = i;
-      for (let it of items) {
-        if (it != current) { it.classList.add("hint"); }
-      }
-    };
-    
-    // (B3) DRAG ENTER - RED HIGHLIGHT DROPZONE
-    i.ondragenter = (ev) => {
-      if (i != current) { i.classList.add("active"); }
-    };
+    for (let i of items) {
+        i.draggable = true;
 
-    // (B4) DRAG LEAVE - REMOVE RED HIGHLIGHT
-    i.ondragleave = () => {
-      i.classList.remove("active");
-    };
+        i.ondragstart = (ev) => {
+            current = i;
+        };
 
-    // (B5) DRAG END - REMOVE ALL HIGHLIGHTS
-    i.ondragend = () => { for (let it of items) {
-        it.classList.remove("hint");
-        it.classList.remove("active");
-    }};
- 
-    // (B6) DRAG OVER - PREVENT THE DEFAULT "DROP", SO WE CAN DO OUR OWN
-    i.ondragover = (evt) => { evt.preventDefault(); };
- 
-    // (B7) ON DROP - DO SOMETHING
-    i.ondrop = (evt) => {
-      evt.preventDefault();
-      if (i != current) {
-        let currentpos = 0, droppedpos = 0;
-        for (let it=0; it<items.length; it++) {
-          if (current == items[it]) { currentpos = it; }
-          if (i == items[it]) { droppedpos = it; }
-        }
-        if (currentpos < droppedpos) {
-          i.parentNode.insertBefore(current, i.nextSibling);
-        } else {
-          i.parentNode.insertBefore(current, i);
-        }
-      }
-    };
-  }
+        i.ondragover = (evt) => { evt.preventDefault(); };
+
+        i.ondrop = (evt) => {
+            evt.preventDefault();
+            if (i != current) {
+                let currentPos = 0, droppedPos = 0;
+                for (let it = 0; it < items.length; it++) {
+                    if (current == items[it]) { currentPos = it; }
+                    if (i == items[it]) { droppedPos = it; }
+                }
+
+                let flag = items[droppedPos].querySelector('input').value;
+                items[droppedPos].querySelector('input').value = items[currentPos].querySelector('input').value;
+                items[currentPos].querySelector('input').value = flag;
+            }
+        };
+    }
 }
 
 
 
 sortButton.addEventListener('mouseover', (event) => {
-    if(event.target.id == 'up')
+    if (event.target.id == 'up')
         event.target.src = '/images/up_black.svg';
     else
         event.target.src = '/images/down_black.svg';
 });
 
 sortButton.addEventListener('mouseout', (event) => {
-    if(event.target.id == 'up')
+    if (event.target.id == 'up')
         event.target.src = '/images/up_gray.svg';
     else
         event.target.src = '/images/down_gray.svg';
