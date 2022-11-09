@@ -4,6 +4,15 @@ body {
     font-family: 'Roboto';
 }
 
+ul {
+    list-style-type: none;
+    margin: 0px;
+}
+
+li {
+    margin-left: -12px;
+}
+
 .container {
     position: absolute;
     top: 50%;
@@ -75,7 +84,6 @@ input {
     display: flex;
     justify-content: space-between;
     width: 225px;
-    margin-left: 28px;
 }
 
 .add span {
@@ -103,7 +111,7 @@ input {
 @media (min-width: 2000px) {
     .container {
         width: 636px;
-        max-height: 566px;
+        max-height: 676px;
         min-height: 446px;
         border-radius: 20px;
     }
@@ -113,9 +121,9 @@ input {
     }
     
     .sort {
-        width: 47px;
-        height: 23px;
-        margin: -20px 0px 0px 520px;
+        width: 52px;
+        height: 28px;
+        margin: 20px 0px 0px 520px;
     }
     
     .add {
@@ -128,7 +136,6 @@ input {
     input {
         height: 38px;
         width: 378px;
-        margin-left:60px;
         font-size: 22px;
     }
     
@@ -139,7 +146,7 @@ input {
     }
     
     .form {
-        margin: 12px 0px 0px 55px;
+        margin: 20px 0px 0px 55px;
         width: 531px;
         max-height: 240px;
         min-height: 45px;
