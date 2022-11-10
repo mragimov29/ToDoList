@@ -60,8 +60,9 @@ function inputEnter() {
                 event.target.src = '/images/remove.svg';
             });
             button.addEventListener('click', (event) => {
-                if(!(item.readOnly) && item.value != '') {
-                    item.value = '';
+                let removeInput = button.parentElement.querySelector('input');
+                if(!(removeInput.readOnly) && removeInput.value != '') {
+                    removeInput.value = '';
                 }  else if (item.readOnly) {
                     button.parentElement.remove();
                 }
