@@ -47,7 +47,7 @@ function inputEnter() {
             if (event.key == 'Enter') {
                 if(item.value != ''){
                     item.readOnly = true;
-                    item.scrollIntoView({behavior: 'smooth'});
+                    item.scrollIntoView({block: "center", inline: "center", behavior: 'smooth'});
                 }
             }
         });
