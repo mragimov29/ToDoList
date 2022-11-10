@@ -59,8 +59,11 @@ function inputEnter() {
                 event.target.src = '/images/remove.svg';
             });
             button.addEventListener('click', (event) => {
-                button.parentElement.remove();
-                
+                if(!(item.readOnly) && item.value != '') {
+                    item.value = '';
+                }  else if (item.readOnly) {
+                    button.parentElement.remove();
+                }
                 if (document.querySelectorAll('input').length == 0) {
                     addInputLine();
                     inputEnter();
@@ -98,8 +101,6 @@ function dragAndDrop() {
         };
     }
 }
-
-
 
 sortButton.addEventListener('mouseover', (event) => {
     if (event.target.id == 'up')
