@@ -60,10 +60,10 @@ function inputEnter() {
                 event.target.src = '/images/remove.svg';
             });
             button.addEventListener('click', (event) => {
-                let removeInput = button.parentElement.querySelector('input');
+                let removeInput = event.target.parentElement.querySelector('input');
                 if(!(removeInput.readOnly) && removeInput.value != '') {
                     removeInput.value = '';
-                }  else if (item.readOnly) {
+                }  else if (removeInput.readOnly || removeInput.value == '') {
                     button.parentElement.remove();
                 }
                 if (document.querySelectorAll('input').length == 0) {
