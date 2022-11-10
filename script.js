@@ -30,14 +30,14 @@ addButton.addEventListener('click', (e) => {
     inputEnter();
     dragAndDrop();
     
-    
     if (input.length > 5) {
         form.style.overflowY = 'auro';
         form.style.overflow = 'scroll';
         form.style.overflowX = 'hidden';
     } else
     form.style.overflowY = 'hidden';
-    form.scrollTop = form.scrollHeight;
+    let li = document.querySelectorAll('li');
+    li[li.length-1].scrollIntoView({behavior: 'smooth'});
 });
 
 function inputEnter() {
@@ -47,6 +47,7 @@ function inputEnter() {
             if (event.key == 'Enter') {
                 if(item.value != ''){
                     item.readOnly = true;
+                    item.scrollIntoView({behavior: 'smooth'});
                 }
             }
         });
